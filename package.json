@@ -1,17 +1,11 @@
 {
-  "name": "incredibly-in-your-face",
-  "displayName": "Incredibly In Your Face",
-  "description": "In Your Face, shows you Incredible 'Uncanny Faces' that correlate to the number of errors in your code!",
-  "version": "1.0.2",
-  "publisher": "VirejDasani",
-  "homepage": "https://github.com/virejdasani",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/virejdasani/Incredibly-InYourFace"
-  },
+  "name": "Daffy-Duck-in-your-face",
+  "displayName": "Daffy Duck In Your Face",
+  "description": "In Your Face, shows you Daffy Duck's expression that correlate to the number of errors in your code!",
+  "version": "1.0.1",
+  "publisher": "SirFrederik",
   "engines": {
-    "vscode": "^1.61.0"
+    "vscode": "^1.99.0"
   },
   "categories": [
     "Visualization"
@@ -29,10 +23,13 @@
     "face",
     "errors",
     "error lens",
-    "error count"
+    "error count",
+    "Daffy DUck",
+    "Looney Tunes",
+    "Funny"
   ],
   "__metadata": {
-    "publisherDisplayName": "VirejDasani"
+    "publisherDisplayName": "Sir Frederik"
   },
   "activationEvents": [
     "onCommand:in-your-face.openview.focus",
@@ -41,26 +38,32 @@
   "main": "./out/extension.js",
   "contributes": {
     "viewsContainers": {
-      "activitybar": [{
-        "id": "custom-activitybar",
-        "title": "Incredibly In Your Face",
-        "icon": "assets/logo_bito.svg"
-      }]
+      "activitybar": [
+        {
+          "id": "custom-activitybar",
+          "title": "Daffy Duck In Your Face",
+          "icon": "assets/sidebarLogo.png"
+        }
+      ]
     },
     "views": {
-      "custom-activitybar": [{
-        "type": "webview",
-        "id": "in-your-face.openview",
-        "name": "In Your Face",
-        "contextualTitle": "In Your Face"
-      }]
+      "custom-activitybar": [
+        {
+          "type": "webview",
+          "id": "in-your-face.openview",
+          "name": "In Your Face",
+          "contextualTitle": "In Your Face"
+        }
+      ]
     },
-    "commands": [{
-      "command": "in-your-face.openview.focus",
-      "category": "In Your Face",
-      "title": "Open Sidebar",
-      "icon": "$(clear-all)"
-    }]
+    "commands": [
+      {
+        "command": "in-your-face.openview.focus",
+        "category": "In Your Face",
+        "title": "Open Sidebar",
+        "icon": "$(clear-all)"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -74,7 +77,7 @@
     "@types/glob": "^7.1.4",
     "@types/mocha": "^9.0.0",
     "@types/node": "^14.18.21",
-    "@types/vscode": "^1.61.0",
+    "@types/vscode": "^1.99.1",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "@vscode/test-electron": "^1.6.2",

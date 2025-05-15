@@ -17,12 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   const provider = new CustomSidebarViewProvider(context.extensionUri);
 
-  context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider(
-      CustomSidebarViewProvider.viewType,
-      provider
-    )
-  );
+  context.subscriptions.push(vscode.window.registerWebviewViewProvider(CustomSidebarViewProvider.viewType, provider));
 
   let _statusBarItem: vscode.StatusBarItem;
   let errorLensEnabled: boolean = true;
@@ -31,33 +26,25 @@ export function activate(context: vscode.ExtensionContext) {
   // console.log('Visual Studio Code Extension "errorlens" is now active');
 
   // Commands are defined in the package.json file
-  let disposableEnableErrorLens = vscode.commands.registerCommand(
-    "ErrorLens.enable",
-    () => {
-      errorLensEnabled = true;
+  let disposableEnableErrorLens = vscode.commands.registerCommand("ErrorLens.enable", () => {
+    errorLensEnabled = true;
 
-      const activeTextEditor: vscode.TextEditor | undefined =
-        vscode.window.activeTextEditor;
-      if (activeTextEditor) {
-        updateDecorationsForUri(activeTextEditor.document.uri);
-      }
+    const activeTextEditor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+    if (activeTextEditor) {
+      updateDecorationsForUri(activeTextEditor.document.uri);
     }
-  );
+  });
 
   context.subscriptions.push(disposableEnableErrorLens);
 
-  let disposableDisableErrorLens = vscode.commands.registerCommand(
-    "ErrorLens.disable",
-    () => {
-      errorLensEnabled = false;
+  let disposableDisableErrorLens = vscode.commands.registerCommand("ErrorLens.disable", () => {
+    errorLensEnabled = false;
 
-      const activeTextEditor: vscode.TextEditor | undefined =
-        vscode.window.activeTextEditor;
-      if (activeTextEditor) {
-        updateDecorationsForUri(activeTextEditor.document.uri);
-      }
+    const activeTextEditor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+    if (activeTextEditor) {
+      updateDecorationsForUri(activeTextEditor.document.uri);
     }
-  );
+  });
 
   context.subscriptions.push(disposableDisableErrorLens);
 
@@ -90,15 +77,12 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions
   );
 
-  function onChangedDiagnostics(
-    diagnosticChangeEvent: vscode.DiagnosticChangeEvent
-  ) {
+  function onChangedDiagnostics(diagnosticChangeEvent: vscode.DiagnosticChangeEvent) {
     if (!vscode.window) {
       return;
     }
 
-    const activeTextEditor: vscode.TextEditor | undefined =
-      vscode.window.activeTextEditor;
+    const activeTextEditor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
     if (!activeTextEditor) {
       return;
     }
@@ -127,8 +111,7 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
 
-    const activeTextEditor: vscode.TextEditor | undefined =
-      vscode.window.activeTextEditor;
+    const activeTextEditor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
     if (!activeTextEditor) {
       return;
     }
@@ -208,62 +191,56 @@ class CustomSidebarViewProvider implements vscode.WebviewViewProvider {
         webviewView.webview.html = this.getHtmlContent1(webviewView.webview);
       } else if (errors < 10) {
         webviewView.webview.html = this.getHtmlContent2(webviewView.webview);
-      } else {
+      } else if (errors < 15) {
         webviewView.webview.html = this.getHtmlContent3(webviewView.webview);
+      } else {
+        webviewView.webview.html = this.getHtmlContent4(webviewView.webview);
       }
     }, 1000);
   }
 
   // This is doom face 0
   private getHtmlContent0(webview: vscode.Webview): string {
-    const stylesheetUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "main.css")
-    );
+    const stylesheetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "main.css"));
 
-    const face0 = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "incredible0.png")
-    );
+    const face0 = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "daffy0.png"));
 
     return getHtml(face0);
   }
 
   // This is doom face 1
   private getHtmlContent1(webview: vscode.Webview): string {
-    const stylesheetUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "main.css")
-    );
+    const stylesheetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "main.css"));
 
-    const face1 = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "incredible1.png")
-    );
+    const face1 = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "daffy1.png"));
 
     return getHtml(face1);
   }
 
   // This is doom face 2
   private getHtmlContent2(webview: vscode.Webview): string {
-    const stylesheetUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "main.css")
-    );
+    const stylesheetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "main.css"));
 
-    const face2 = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "incredible2.png")
-    );
+    const face2 = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "daffy2.png"));
 
     return getHtml(face2);
   }
 
   // This is doom face 3
   private getHtmlContent3(webview: vscode.Webview): string {
-    const stylesheetUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "main.css")
-    );
+    const stylesheetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "main.css"));
 
-    const face3 = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "assets", "incredible3.png")
-    );
+    const face3 = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "daffy3.png"));
 
     return getHtml(face3);
+  }
+  // This is doom face 4
+  private getHtmlContent4(webview: vscode.Webview): string {
+    const stylesheetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "main.css"));
+
+    const face4 = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "assets", "daffy4.png"));
+
+    return getHtml(face4);
   }
 }
 
@@ -288,8 +265,7 @@ function getHtml(doomFace: any) {
 
 // function to get the number of errors in the open file
 function getNumErrors(): number {
-  const activeTextEditor: vscode.TextEditor | undefined =
-    vscode.window.activeTextEditor;
+  const activeTextEditor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
   if (!activeTextEditor) {
     return 0;
   }
