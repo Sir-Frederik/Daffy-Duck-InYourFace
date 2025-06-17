@@ -9,9 +9,15 @@
 <!-- ![Rating](https://vsmarketplacebadge.apphb.com/rating-star/VirejDasani.in-your-face.svg)
 ![Version](https://vsmarketplacebadge.apphb.com/version/VirejDasani.in-your-face.svg) -->
 <!-- [Installs](https://vsmarketplacebadge.apphb.com/installs/VirejDasani.hydroxy.svg) -->
-<img src="https://github.com/Sir-Frederik/Daffy-Duck-InYourFace/blob/main/assets/smallBanner.png" width="500"/>
+<!--<img src="https://github.com/Sir-Frederik/Daffy-Duck-InYourFace/blob/main/assets/smallBanner.png" width="500"/> -->
+
+![Loading...](https://github.com/Sir-Frederik/Daffy-Duck-InYourFace/blob/main/assets/smallBanner.png)
 
 Daffy Duck In Your Face, is a VSCode extension that shows you Daffy Duck expressions that correlate to the number of errors in your code!
+
+<!--<img src="https://github.com/Sir-Frederik/Daffy-Duck-InYourFace/blob/main/assets/Screenshot.png" width="500"/> -->
+
+![Loading...](https://github.com/Sir-Frederik/Daffy-Duck-InYourFace/blob/main/assets/Screenshot.png)
 
 <!-- ![Loading...](https://raw.githubusercontent.com/virejdasani/Incredibly-InYourFace/main/assets/smallBanner.png)
 
